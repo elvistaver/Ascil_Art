@@ -36,8 +36,8 @@ func main() {
 		for i := 0; i < 8; i++ {
 			var line strings.Builder
 
-			for _, ch:= range chr {
-				start := (int(chr)-32)*9 + 1
+			for _, ch:= range input {
+				start := (int(ch)-32)*9 + 1
 				line.WriteString(files[start+i])
 			}
 			fmt.Print(line.String(), "\n")
