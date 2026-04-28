@@ -21,9 +21,6 @@ func main() {
 		fmt.Println()
 		return
 	}
-	if input == " " {
-		return
-	}
 
 	files := Filesystem.AscilArt("bannerFiles")
 
@@ -32,13 +29,15 @@ func main() {
 			fmt.Println()
 			continue
 		}
+		if chr < 32 || chr > 126{
+			return
+		}
 
 		for i := 0; i < 8; i++ {
 			var line strings.Builder
 
-			for _, ch := range chr {
-				
-				start := (int(ch)-32)*9 + 1
+			for _, ch:= range chr {
+				start := (int(chr)-32)*9 + 1
 				line.WriteString(files[start+i])
 			}
 			fmt.Print(line.String(), "\n")
