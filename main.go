@@ -3,15 +3,13 @@ package main
 import (
 	"Ascil_Art/Filesystem"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
 
 func main() {
 
-	if len(os.Args) != 3 {
-		fmt.Println("usage go run . bannerfile.txt input | cat -e")
-	}
 	input := strings.TrimSpace(os.Args[1])
 
 	if input == "" {
@@ -24,23 +22,18 @@ func main() {
 
 	files := Filesystem.AscilArt("bannerFiles")
 
-	for _, chr := range input {
-		if chr == '\n' {
-			fmt.Println()
-			continue
-		}
-		if chr < 32 || chr > 126{
-			return
-		}
+	for i := 0; i < 8; i++ {
+		line := ""
 
-		for i := 0; i < 8; i++ {
-			var line strings.Builder
-
-			for _, ch:= range input {
-				start := (int(ch)-32)*9 + 1
-				line.WriteString(files[start+i])
+		for _, ch := range input {
+			if ch < 32 || ch > 126 {
+				log.Fatal(" \n not a valid character")
+				return
 			}
-			fmt.Print(line.String(), "\n")
+			start := (int(ch)-32)*9 + 1
+			line += files[start+i]
+			
 		}
+		fmt.Print(line, "\n")
 	}
 }
