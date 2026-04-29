@@ -12,8 +12,9 @@ func main() {
 
 	input := strings.TrimSpace(os.Args[1])
 
-	if len(os.Args) != 3{
+	if len(os.Args) != 3 {
 		fmt.Println("leave")
+		return
 	}
 
 	if input == "" {
@@ -24,7 +25,7 @@ func main() {
 		return
 	}
 
-	files := Filesystem.AscilArt("bannerFiles")
+	files := Filesystem.ReadBanner("bannerFiles/.txt")
 
 	for i := 0; i < 8; i++ {
 		line := ""
@@ -36,7 +37,7 @@ func main() {
 			}
 			start := (int(ch)-32)*9 + 1
 			line += files[start+i]
-			
+
 		}
 		fmt.Print(line, "\n")
 	}

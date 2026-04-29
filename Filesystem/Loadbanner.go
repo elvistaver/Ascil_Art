@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func AscilArt(input string) []string {
+func ReadBanner(input string) []string {
 	result := []string{}
 
 		file, err := os.Open("bannerFiles/standard.txt")
