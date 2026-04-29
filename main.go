@@ -30,22 +30,22 @@ func main() {
 	files := Filesystem.ReadBanner(FileName)
 
 	for _, chr:= range inputfile{
-		if chr == "\\n"{
+		if chr == ""{
 			fmt.Println()
 			continue	
 		}
-		for i := 0; i < 8; i++ {
-			line := ""
-			for _, ch := range chr {
-				if ch < 32 || ch > 126 {
-					log.Fatal(" \n not a valid character")
-					return
+			for i := 0; i < 8; i++ {
+				line := ""
+				for _, ch := range chr {
+					if ch < 32 || ch > 126 {
+						log.Fatal(" \n not a valid character")
+						return
+					}
+					start := (int(ch)-32)*9 + 1
+					line += files[start+i]
 				}
-				start := (int(ch)-32)*9 + 1
-				line += files[start+i]
+				fmt.Print(line, "\n")
 			}
-			fmt.Print(line, "\n")
-		}
 	}
 
 }
