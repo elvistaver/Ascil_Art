@@ -7,29 +7,17 @@ import (
 )
 
 func AscilArt(input string) []string {
-	final := []string{}
+	result := []string{}
 
-	data, err := os.ReadDir(input)
-
-	if err != nil {
-		fmt.Println("file not in directory")
-	}
-
-	for _, files := range data {
-		fs := files.Name()
-		if files.IsDir() {
-			continue
-		}
-		tex, err := os.Open("bannerFiles/" + fs)
+		file, err := os.Open("bannerFiles/standard.txt")
 		if err != nil {
 			fmt.Println("file not found")
 		}
-		text := bufio.NewScanner(tex)
-		for text.Scan() {
-			line := text.Text()
-			final = append(final, line)
+		readingfile := bufio.NewScanner(file)
+		for readingfile.Scan() {
+			line := readingfile.Text()
+			result = append(result, line)
 		}
-		defer tex.Close()
-	}
-	return final	
+		defer file.Close()
+	return result	
 }

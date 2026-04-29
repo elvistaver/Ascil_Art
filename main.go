@@ -12,6 +12,10 @@ func main() {
 
 	input := strings.TrimSpace(os.Args[1])
 
+	if len(os.Args) != 3{
+		fmt.Println("leave")
+	}
+
 	if input == "" {
 		return
 	}
