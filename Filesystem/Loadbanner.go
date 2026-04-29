@@ -2,22 +2,26 @@ package Filesystem
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 )
 
 func ReadBanner(input string) []string {
 	result := []string{}
 
-		file, err := os.Open("bannerFiles/standard.txt")
-		if err != nil {
-			fmt.Println("file not found")
-		}
-		readingfile := bufio.NewScanner(file)
-		for readingfile.Scan() {
-			line := readingfile.Text()
-			result = append(result, line)
-		}
-		defer file.Close()
-	return result	
+	file, err := os.Open("bannerFiles/" + input + ".txt")
+	if err != nil {
+		log.Fatal("\nfile not found")
+	}
+	defer file.Close()
+
+	readingfile := bufio.NewScanner(file)
+	for readingfile.Scan() {
+		line := readingfile.Text()
+		result = append(result, line)
+	}
+	if err != readingfile.Err(){
+		log.Fatal("\n could not read File")
+	}
+	return result
 }
