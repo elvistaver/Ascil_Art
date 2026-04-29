@@ -6,10 +6,10 @@ import (
 	"os"
 )
 
-func ReadBanner(input string) []string {
+func ReadBanner(bannerName string) []string {
 	result := []string{}
 
-	file, err := os.Open("bannerFiles/" + input + ".txt")
+	file, err := os.Open("bannerFiles/" + bannerName + ".txt")
 	if err != nil {
 		log.Fatal("\nfile not found")
 	}
@@ -20,8 +20,8 @@ func ReadBanner(input string) []string {
 		line := readingfile.Text()
 		result = append(result, line)
 	}
-	if err != readingfile.Err(){
-		log.Fatal("\n could not read File")
-	}
+	// if err == readingfile.Err(){
+	// 	log.Fatal("\n could not read File")
+	// }
 	return result
 }
