@@ -10,7 +10,7 @@ import (
 func main() {
 
 	if len(os.Args) != 3 {
-		fmt.Println("invalid commandline argument: usage; go run . input text  bannerfile-type")
+		fmt.Println("Invalid commandline argument: usage; go run . input text  bannerfile-type")
 		return
 	}
 
