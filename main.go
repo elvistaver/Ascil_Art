@@ -24,27 +24,27 @@ func main() {
 		fmt.Println()
 		return
 	}
-	inputfile:= strings.Split(input, "\\n")
+	inputfile := strings.Split(input, "\\n")
 
 	files := Filesystem.ReadBanner(FileName)
 
-	for _, chr:= range inputfile{
-		if chr == ""{
+	for _, chr := range inputfile {
+		if chr == "" {
 			fmt.Println()
-			continue	
+			continue
 		}
-			for i := 0; i < 8; i++ {
-				line := ""
-				for _, ch := range chr {
-					if ch < 32 || ch > 126 {
-						fmt.Printf(" \n not a valid character%v",string(ch))
-						return
-					}
-					start := (int(ch)-32)*9 + 1
-					line += files[start+i]
+		for i := 0; i < 8; i++ {
+			line := ""
+			for _, ch := range chr {
+				if ch < 32 || ch > 126 {
+					fmt.Printf("not a valid character:%v\n", string(ch))
+					return
 				}
-				fmt.Print(line, "\n")
+				start := (int(ch)-32)*9 + 1
+				line += files[start+i]
 			}
+			fmt.Print(line, "\n")
+		}
 	}
 
 }
