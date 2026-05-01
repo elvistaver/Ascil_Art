@@ -21,7 +21,7 @@ func ReadBanner(bannerName string) []string {
 		result = append(result, line)
 	}
 	if err != readingfile.Err() {
-		log.Fatal("\n could not read File")
+		log.Fatal("\n could not read File.")
 	}
 	return result
 }
