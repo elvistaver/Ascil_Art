@@ -3,7 +3,6 @@ package main
 import (
 	"Ascil_Art/Filesystem"
 	"fmt"
-	"log"
 	"os"
 	"strings"
 )
@@ -38,7 +37,7 @@ func main() {
 				line := ""
 				for _, ch := range chr {
 					if ch < 32 || ch > 126 {
-						log.Fatal(" \n not a valid character")
+						fmt.Printf(" \n not a valid character%v",string(ch))
 						return
 					}
 					start := (int(ch)-32)*9 + 1
